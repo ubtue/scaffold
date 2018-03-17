@@ -42,6 +42,14 @@
 		<key id="save" modifiers="accel" key="S" oncommand="Scaffold.save()"/>
 	</keyset>
 
+	<popupset>
+		<menupopup id="testing-context-menue">
+			<menuitem label="&scaffold.testing.edit.import;" tooltiptext="Edit the input data for the current test" oncommand="Scaffold.editImportFromTest()"/>
+			<menuitem label="&scaffold.testing.copyToClipboard;" tooltiptext="Copy the URL or data for the current test to the clipboard" oncommand="Scaffold.copyToClipboard()"/>
+			<menuitem label="&scaffold.testing.openUrl;" tooltiptext="Open the URL for the current test in the browser" oncommand="Scaffold.openURL()"/>
+		</menupopup>
+	</popupset>
+
 	<vbox flex="1">
 		
 		<menubar id="mb">
@@ -180,7 +188,7 @@
 					</tabpanel>
 					<tabpanel flex="1" id="tabpanel-testing">
 						<vbox flex="1"><hbox><description>&scaffold.testing.description;</description></hbox>
-							<hbox flex="1">
+							<hbox flex="1" context="testing-context-menue">
 								<listbox id="testing-listbox" flex="1" seltype="multiple">
 									<listhead>
 										<listheader label="&scaffold.testing.input.label;"/>
@@ -197,14 +205,11 @@
 								<button label="&scaffold.testing.save;" tooltiptext="Save the above test definitions into the current translator, and save the translator"  oncommand="Scaffold.saveTests()"/>
 								<button label="&scaffold.testing.delete;" tooltiptext="Delete the selected tests"  oncommand="Scaffold.deleteSelectedTests()"/>
 								<button label="&scaffold.testing.run;" tooltiptext="Run the selected tests"  oncommand="Scaffold.runSelectedTests()"/>
-								<button label="&scaffold.testing.openUrl;" tooltiptext="Open the URL for the current test in the browser"  oncommand="Scaffold.openURL()" />
 							</hbox>
 							<hbox>
 								<button label="&scaffold.testing.update;" tooltiptext="Update a test to match current item"  oncommand="Scaffold.updateSelectedTests()"/>
 								<button label="&scaffold.testing.new;" tooltiptext="Create a new test from the current page"  oncommand="Scaffold.newTestFromCurrent('web')" />
 								<button label="&scaffold.testing.new.import;" tooltiptext="Create a new test from the current import"  oncommand="Scaffold.newTestFromCurrent('import')" />
-								<button label="&scaffold.testing.edit.import;" tooltiptext="Edit the input data for the current test"  oncommand="Scaffold.editImportFromTest()" />
-								<button label="&scaffold.testing.copyUrl;" tooltiptext="Copy the URL for the current test"  oncommand="Scaffold.copyURL()" />
 							</hbox>
 						</vbox>
 					</tabpanel>
