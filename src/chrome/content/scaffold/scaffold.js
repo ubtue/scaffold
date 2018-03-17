@@ -59,6 +59,8 @@ var Scaffold = new function() {
 	this.deleteSelectedTests = deleteSelectedTests;
 	this.newTestFromCurrent = newTestFromCurrent;
 	this.editImportFromTest = editImportFromTest;
+	this.copyURL = copyURL;
+	this.openURL = openURL;
 
 	var _browser, _frames, _document;
 	
@@ -938,6 +940,26 @@ var Scaffold = new function() {
 			_logOutput("Can't edit import data for a non-import test.");
 		}
 		_editors["import"].getSession().setValue(test.input);
+	}
+	
+	/*
+	 * Copy the url of the first selected test to the clipboard.
+	 */	
+	function copyURL() {
+		var listbox = document.getElementById("testing-listbox");
+		var item = listbox.selectedItems[0];
+		var url = item.getElementsByTagName("listcell")[0].getAttribute("label");
+		Zotero.Utilities.Internal.copyTextToClipboard(url);
+	}
+	
+	/*
+	 * Open the url of the first selected test in the browser.
+	 */	
+	function openURL() {
+		var listbox = document.getElementById("testing-listbox");
+		var item = listbox.selectedItems[0];
+		var url = item.getElementsByTagName("listcell")[0].getAttribute("label");
+		Zotero.launchURL(url);
 	}
 	
 	/*
