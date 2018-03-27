@@ -39,4 +39,5 @@ window.addEventListener("DOMContentLoaded", function(e) {
 	EditSession = require("ace/edit_session").EditSession;
 	editor = ace.edit('ace-div');
 	editor.setTheme("ace/theme/monokai");
+	editor.setOption("firstLineNumber", 15);
 }, false);
